@@ -20,7 +20,7 @@ export default function Results() {
     useEffect(() => {
         setTimeout(() => {
             setLoader(false);
-        }, 3000);
+        }, 2000);
     }, []);
 
     const handlePairSelection = (pairId: number): void => {
@@ -65,21 +65,21 @@ export default function Results() {
     });
 
     return (
-        <div className="w-[80%]">
+        <div className="absolute right-0 w-[80%]">
             {loader ? (
                 <Loading />
             ) : (
                 <>
                     <div className="flex justify-evenly items-center mb-3">
-                        <h1 className="text-md">Search any question</h1>
+                        {/* <h1 className="text-md">Search any question</h1>
                         <input
                             type="text"
                             placeholder="Type here..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             className="ml-3 top-3 border-2 w-[17%] text-black text-lg shadow-2xl border-black bg-gray-100 px-2 py-1 rounded-md mr-3"
-                        />
-                        <button className="bg-gray-800 font-medium border-2 border-black hover:bg-blue-950 p-2 text-white text-lg rounded-xl shadow-2xl m-3 w-fit ml-[40%]" onClick={generateJSONL}>Download Final Data</button>
+                        /> */}
+                        {/* <button className="bg-gray-800 font-medium border-2 border-black hover:bg-blue-950 p-2 text-white text-lg rounded-xl shadow-2xl m-3 w-fit ml-[40%]" onClick={generateJSONL}>Download Final Data</button>
                         <select
                             value={sortBy}
                             onChange={(e) => setSortBy(e.target.value)}
@@ -88,23 +88,23 @@ export default function Results() {
                             <option value="id">Sort by ID</option>
                             <option value="question">Sort by Question</option>
                             <option value="liked">Sort by Liked</option>
-                        </select>
+                        </select> */}
                     </div>
                     <div>
                         <ul className="flex flex-wrap justify-evenly">
                             {filteredData.map(pair => (
-                                <li className={!theme ? "border border-black w-[30%] rounded-xl bg-[#1c1b1b] text-white text-lg m-3 p-3" : "border border-black w-[30%]  rounded-xl bg-gray-100 text-black text-lg m-3 p-3"} key={pair.id}>
+                                <li className={!theme ? "border border-black w-[30%] rounded-xl bg-[#fff] text-black text-lg m-3 p-3" : "border border-black w-[30%]  rounded-xl bg-gray-100 text-black text-lg m-3 p-3"} key={pair.id}>
                                     <label>
-                                        <input
+                                        {/* <input
                                             type="checkbox"
                                             checked={selectedPairs.includes(pair.id)}
                                             onChange={() => handlePairSelection(pair.id)}
                                         />
-                                        👍🏻Like
+                                        👍🏻Like */}
                                         <p className="pt-2 font-bold text-lg">
                                             {"Q." + pair.id + " " + pair.question}
                                         </p>
-                                        <p className="font-extralight text-sm">
+                                        <p className="font-light text-sm">
                                             Answer- {pair.answer}
                                         </p>
                                     </label>

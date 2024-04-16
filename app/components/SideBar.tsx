@@ -10,12 +10,12 @@ const SideBar = () => {
   const [themeButtonLight, setThemeButtonLight] = useState(true);
 
   return (
-    <div className={`fixed left-0 w-[16%] ${themeButtonLight ? 'bg-[#1b1a1a]' : 'bg-[#0d132e]'} rounded-r-xl h-screen shadow-2 xl text-white`}>
+    <div className={` fixed left-0 w-[16%] ${themeButtonLight ? 'bg-[#1b1a1a]' : 'bg-[#0d132e]'} rounded-r-xl h-screen shadow-2 xl text-white`}>
           <Link href={"/"}>
           <img className="w-fit opacity-85 p-3" src="/images/light_full_logo.webp" width={150} height={50} alt="Bhabha AI" />
           </Link>
-          <div className="w-cover mt-24">
-            <ul className="p-2 text-gray-300 font-medium text-xl pl-12 cursor-pointer">
+          <div className=" w-cover mt-24">
+            <ul className="p-2 text-gray-300 font-medium text-md md:text-lg lg:text-xl pl-12 cursor-pointer">
                 <Link href={"/dataset"} >  
               <li className="p-2 hover:bg-gray-400 hover:text-black rounded-xl w-fit pl-2 pr-2 flex items-left justify-start mt-7">
                 <span className="mr-2">
@@ -45,7 +45,9 @@ const SideBar = () => {
                 }
               </button>
               <SideBarButton name={"T&C"} icon={faBook} />
+              <Link href={"/settings"} >
               <SideBarButton name={"Settings"} icon={faGear} />
+              </Link>
                 <Link href="/logout" >
               <div className="absolute bottom-5">
                 <SideBarButton name={"Signup/Signin"} icon={faRightFromBracket} />

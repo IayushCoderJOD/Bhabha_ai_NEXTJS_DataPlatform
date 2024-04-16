@@ -70,6 +70,8 @@ export default function Results() {
                 <Loading />
             ) : (
                 <>
+            <h1 className="text-xl font-medium uppercase underline pt-3"> Datasets Created</h1>
+
                     <div className="flex justify-evenly items-center mb-3">
                         {/* <h1 className="text-md">Search any question</h1>
                         <input

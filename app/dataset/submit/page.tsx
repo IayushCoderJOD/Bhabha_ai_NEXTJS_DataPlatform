@@ -1,4 +1,3 @@
-
 'use client'
 import React, { useState, useEffect } from "react";
 import { saveAs } from "file-saver";
@@ -12,18 +11,20 @@ interface Pair {
   answer?: string;
 }
 
-export default function Results() {
+const Results = () => {
   const [loader, setLoader] = useState<boolean>(true);
   const [selectedPairs, setSelectedPairs] = useState<number[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [sortBy, setSortBy] = useState<string>("id");
   const [theme, setTheme] = useState<boolean>(false);
   const [data, setData] = useState<Pair[]>([]);
+  const [stopGenerating, setStopGenerating] = useState<boolean>(false);
+  const [continueGenerating, setContinueGenerating] = useState<boolean>(true); // Added state
+  const [cardIndex, setCardIndex] = useState<number>(0);
 
   useEffect(() => {
     fetchData();
   }, []);
-
 
   // Api endpoint created to fetch the data from /api/result
   const fetchData = async () => {
@@ -76,44 +77,43 @@ export default function Results() {
       return 0;
     });
 
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    if (!stopGenerating && continueGenerating && cardIndex < filteredData.length) { // Check continueGenerating
+      timer = setTimeout(() => {
+        console.log("Card index:", cardIndex);
+        setCardIndex(prevIndex => prevIndex + 1);
+      }, 300);
+    }
+    return () => clearTimeout(timer);
+  }, [stopGenerating, continueGenerating, cardIndex, filteredData]); // Include continueGenerating here
+
+  console.log("Filtered data length:", filteredData.length);
+
   return (
     <div className="absolute right-0 w-[80%]">
       {loader ? (
         <Loading />
       ) : (
         <>
-        <Link href={"/mydataset"}>
-          <h1 className="text-xl cursor-pointer font-medium  underline pt-3">{`<- go back`}</h1>
-        </Link>
+          <div className="flex space-x-44">
+            <Link href={"/dataset"}>
+              <h1 className="text-xl cursor-pointer font-medium  underline pt-3"> {`<- edit the inputs`}</h1>
+            </Link>
+            
+            <div>
+            <button className="bg-black text-xs sm:text-sm lg:text-base xl:text-lg shadow-gray-300 shadow-md hover:bg-gray-900  rounded-lg  m-2 ml-4  p-2 text-gray-100" onClick={() => setStopGenerating(true)}>Stop Generating</button>
+            <button className="bg-black text-xs sm:text-sm lg:text-base xl:text-lg shadow-gray-300 shadow-md hover:bg-gray-900  rounded-lg  m-2 ml-4  p-2 text-gray-100" onClick={() => { setStopGenerating(false); setContinueGenerating(true); }}>Continue Generating</button>
+            </div>
+          </div>
           <div>
-          <div className=" items-center mb-3">
-                        <button className="bg-gray-800 font-medium border-2 border-black hover:bg-blue-950 p-2 text-white text-sm rounded-xl shadow-2xl m-3 w-fit ml-[40%]" onClick={generateJSONL}>Download Final Data</button>
-                        <select
-                            value={sortBy}
-                            onChange={(e) => setSortBy(e.target.value)}
-                            className="bg-gray-200 px-3 py-2 rounded-md"
-                        >
-                            <option value="id">Sort by ID</option>
-                            <option value="question">Sort by Question</option>
-                        </select>
-                  
-                    </div>
             <ul className="flex flex-wrap justify-start">
-              {filteredData.map((pair) => (
+              {filteredData.slice(0, cardIndex).map((pair) => (
                 <li
                   className={"border text-xs md:text-base ld:text-lg border-black w-[40%] lg:w-[30%] rounded-lg shadow-lg shadow-gray-400 bg-[#fff] text-black  m-3 p-3"}
                   key={pair.id}
                 >
                   <label>
-                  <select
-                  className="bg-gray-200 p-1 rounded-md text-black"
-    value={selectedPairs.includes(pair.id) ? "selected" : ""}
-    onChange={(e) => handlePairSelection(pair.id)}
->
-    <option value="">Not Selected</option>
-    <option value="selected">Selected</option>
-</select>
-
                     <p className="pt-2 font-bold text-lg">
                       {"Q." + pair.id + " " + pair.question}
                     </p>
@@ -129,4 +129,6 @@ export default function Results() {
       )}
     </div>
   );
-}
+};
+
+export default Results;

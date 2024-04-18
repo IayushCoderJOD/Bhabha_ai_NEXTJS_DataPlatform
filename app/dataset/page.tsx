@@ -25,7 +25,7 @@ const CreateDataSets = () => {
   };
 
   return (
-    <div className="absolute right-0 flex justify-start w-[80%]">
+    <div className="absolute right-0 flex justify-start w-[90%] lg:w-[75%] ">
       <div className="flex flex-col w-[80%]">
         <textarea
           className="text-md text-lg p-2 border h-full m-6 border-gray-300 rounded-md py-2 px-4 mb-3"
@@ -33,16 +33,16 @@ const CreateDataSets = () => {
           cols={60}
           placeholder="Tell about your model, including it's name, who created it, languages it know, last training knowledge cut-off date..."
         />
-        <Link href="/mydataset/result">
+        <Link href="/dataset/submit">
           <button className="bg-green-600 w-fit hover:bg-green-700 text-white font-bold py-2 mb-1 mx-5 px-4 rounded">
             Submit
           </button>
         </Link>
       </div>
       
-      <div className="w-[17%] bg-[#fff] p-6 h-screen right-0 shadow-md absolute overflow-auto">
+      <div className=" w-[20%] lg:w-[20%] bg-[#fff] p-6 h-screen right-0 shadow-md absolute overflow-auto">
       <div className="mb-2">
-          <label className="block text-gray-700 text-sm font-bold mb-1">Model</label>
+          <label className="block text-gray-700 text-xs xl:text-sm font-bold mb-1">Model</label>
           <select className="w-full border border-gray-300 rounded-xl py-2 px-4">
             <option value="chatgpt">ChatGPT</option>
             <option value="gemini">Gemini</option>
@@ -50,7 +50,7 @@ const CreateDataSets = () => {
           </select>
         </div>
         <div className="mb-3">
-          <label className="block text-gray-700 text-sm font-bold mb-1">Temperature - {temperature}</label>
+          <label className="block text-gray-700 text-xs xl:text-sm font-bold mb-1">Temperature - {temperature}</label>
           <input
             type="range"
             min="0"
@@ -62,7 +62,7 @@ const CreateDataSets = () => {
           />
         </div>
         <div className="mb-3">
-          <label className="block text-gray-700 text-sm font-bold mb-1">Maximum Length - {maxLength}</label>
+          <label className="block text-gray-700 text-xs xl:text-sm font-bold mb-1">Maximum Length - {maxLength}</label>
           <input
             type="range"
             min="100"
@@ -74,7 +74,7 @@ const CreateDataSets = () => {
           />
         </div>
         <div className="mb-3">
-          <label className="block text-gray-700 text-sm font-bold mb-1">Stop sequences</label>
+          <label className="block text-gray-700 text-xs xl:text-sm font-bold mb-1">Stop sequences</label>
           <input
             type="text"
             placeholder='Enter seq. and press tab'
@@ -82,7 +82,7 @@ const CreateDataSets = () => {
           />
         </div> 
         <div className="mb-3">
-          <label className="block text-gray-700 text-sm font-bold mb-1">Frequency Penalty - {frequencyPenalty}</label>
+          <label className="block text-gray-700 text-xs xl:text-sm font-bold mb-1">Frequency Penalty - {frequencyPenalty}</label>
           <input
             type="range"
             min="0"
@@ -94,7 +94,7 @@ const CreateDataSets = () => {
           />
         </div>
         <div className="mb-3">
-          <label className="block text-gray-700 text-sm font-bold mb-1">Presence Penalty - {presencePenalty}</label>
+          <label className="block text-gray-700 text-xs xl:text-sm font-bold mb-1">Presence Penalty - {presencePenalty}</label>
           <input
             type="range"
             min="0"
@@ -106,7 +106,7 @@ const CreateDataSets = () => {
           />
         </div>
         <div className="mb-3">
-          <label className="block text-gray-700 text-sm font-bold mb-1">Inject start text</label>
+          <label className="block text-gray-700 text-xs xl:text-sm font-bold mb-1">Inject start text</label>
           <input
             type="text"
             placeholder='✅'
@@ -114,7 +114,7 @@ const CreateDataSets = () => {
           />
         </div>
         <div>
-          <label className="block text-gray-700 text-sm font-bold mb-1">Show probablities</label>
+          <label className="block text-gray-700 text-xs xl:text-sm font-bold mb-1">Show probablities</label>
           <select
             className="w-full border border-gray-300 rounded-xl py-2 px-4"
           >

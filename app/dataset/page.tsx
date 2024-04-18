@@ -41,7 +41,7 @@ const CreateDataSets = () => {
       </div>
       
       <div className="w-[17%] bg-[#fff] p-6 h-screen right-0 shadow-md absolute overflow-auto">
-      <div className="mb-3">
+      <div className="mb-2">
           <label className="block text-gray-700 text-sm font-bold mb-1">Model</label>
           <select className="w-full border border-gray-300 rounded-xl py-2 px-4">
             <option value="chatgpt">ChatGPT</option>
@@ -107,14 +107,6 @@ const CreateDataSets = () => {
         </div>
         <div className="mb-3">
           <label className="block text-gray-700 text-sm font-bold mb-1">Inject start text</label>
-          <input
-            type="text"
-            placeholder='✅'
-            className="w-full border border-gray-300 rounded-xl py-2 px-4"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block text-gray-700 text-sm font-bold mb-1">Inject restart text</label>
           <input
             type="text"
             placeholder='✅'

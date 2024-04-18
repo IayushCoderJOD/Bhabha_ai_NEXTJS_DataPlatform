@@ -100,3 +100,22 @@ export const dummyData = [
         answer: "An API (Application Programming Interface) is a set of rules, protocols, and tools that allows different software applications to communicate and interact with each other. It defines the methods and data formats used for communication, enabling developers to integrate and extend the functionality of their applications."
     },
 ];
+
+
+
+
+export const initialDatasets = [
+    { id: 1, name: 'Dataset 1' },
+    { id: 2, name: 'Dataset 2' },
+    { id: 3, name: 'Dataset 3' },
+    { id: 4, name: 'Dataset 4' },
+    { id: 5, name: 'Dataset 5' },
+    { id: 6, name: 'Dataset 6' },
+    { id: 7, name: 'Dataset 7' },
+    { id: 8, name: 'Dataset 8' },
+    { id: 9, name: 'Dataset 9' },
+    { id: 10, name: 'Dataset 10' },
+    { id: 11, name: 'Dataset 11' },
+    { id: 12, name: 'Dataset 12' },
+    // Add more datasets as needed
+  ];

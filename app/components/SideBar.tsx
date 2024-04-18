@@ -10,12 +10,12 @@ const SideBar = () => {
   const [themeButtonLight, setThemeButtonLight] = useState(true);
 
   return (
-    <div className={` fixed left-0 w-[17%] ${themeButtonLight ? 'bg-[#1b1a1a]' : 'bg-[#0d132e]'} rounded-r-xl h-screen shadow-2 xl text-white`}>
+    <div className={`hidden lg:block fixed left-0 w-[17%] ${themeButtonLight ? 'bg-[#1b1a1a]' : 'bg-[#0d132e]'} rounded-r-xl h-screen shadow-2 xl text-white`}>
           <Link href={"/"}>
           <img className="w-fit opacity-85 p-3" src="/images/light_full_logo.webp" width={150} height={50} alt="Bhabha AI" />
           </Link>
           <div className=" w-cover mt-16">
-            <ul className="p-2 text-gray-300 font-medium text-md md:text-lg lg:text-xl pl-12 cursor-pointer">
+            <ul className="p-2 text-gray-300 font-medium text-xs  lg:text-sm xl:text-xl pl-12 cursor-pointer">
                 <Link href={"/dataset"} >  
               <li className="p-2 hover:bg-gray-400 hover:text-black rounded-xl w-fit pl-2 pr-2 flex items-left justify-start mt-7">
                 <span className="mr-2">

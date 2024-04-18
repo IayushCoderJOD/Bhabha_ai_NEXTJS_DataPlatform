@@ -19,7 +19,7 @@ const Settings = () => {
             <div className='text-lg pl-4 p-2'>
                 <label className='text-base text-gray-600 font-semibold'>Email</label>
                 <br />
-                <input className='mt-2 p-2 border border-gray-200 w-60 md:w-96 ' type="text" value={"satpal@gmail.ai"} />
+                <input className='mt-2 p-2 border border-gray-200 w-60 md:w-96 ' type="text" value={"satpal@gmail.com"} />
             </div>
             <div className='text-lg pl-4 p-2'>
     <label className='text-base text-gray-600 font-semibold'>Connected Accounts</label>

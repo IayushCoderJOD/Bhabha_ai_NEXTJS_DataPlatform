@@ -86,7 +86,7 @@ export default function Results() {
             <ul className="flex flex-wrap justify-evenly">
               {filteredData.map((pair) => (
                 <li
-                  className={!theme ? "border border-black w-[30%] rounded-xl bg-[#fff] text-black text-lg m-3 p-3" : "border border-black w-[30%]  rounded-xl bg-gray-100 text-black text-lg m-3 p-3"}
+                  className={"border text-xs md:text-base ld:text-lg border-black w-[40%] lg:w-[30%] rounded-lg shadow-lg shadow-gray-400 bg-[#fff] text-black  m-3 p-3"}
                   key={pair.id}
                 >
                   <label>

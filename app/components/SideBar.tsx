@@ -33,17 +33,6 @@ const SideBar = () => {
               </li>
                 </Link>
               <SideBarButton name={"Models"} icon={faMicrochip} />
-              <button onClick={() => {
-                setThemeButtonLight(!themeButtonLight);
-              }}>
-                {
-                  themeButtonLight === true ? (
-                    <SideBarButton name={"Theme"} icon={faToggleOff} />
-                  ) : (
-                    <SideBarButton name={"Theme"} icon={faToggleOn} />
-                  )
-                }
-              </button>
               <SideBarButton name={"T&C"} icon={faBook} />
               <Link href={"/settings"} >
               <SideBarButton name={"Settings"} icon={faGear} />

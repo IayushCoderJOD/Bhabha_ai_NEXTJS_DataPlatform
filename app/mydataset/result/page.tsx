@@ -101,7 +101,7 @@ export default function Results() {
             <ul className="flex flex-wrap justify-start">
               {filteredData.map((pair) => (
                 <li
-                  className={"border text-xs md:text-base ld:text-lg border-black w-[40%] lg:w-[30%] rounded-lg shadow-lg shadow-gray-400 bg-[#fff] text-black  m-3 p-3"}
+                  className={"border text-xs md:text-base ld:text-lg border-black w-[40%] lg:w-[30%] rounded-md shadow-lg shadow-gray-400 bg-[#fff] text-black  m-3 p-3"}
                   key={pair.id}
                 >
                   <label>

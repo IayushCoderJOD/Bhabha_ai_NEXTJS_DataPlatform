@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect } from "react";
 import { saveAs } from "file-saver";
-import Loading from "../../loading";
+import Loading from "@/app/loading";
 import axios from "axios";
 import Link from "next/link";
 
@@ -97,14 +97,13 @@ const Results = () => {
       ) : (
         <>
           <div className="flex space-x-44">
-            <Link href={"/dataset"}>
+            <Link href={"/createdataset/knowledgemodel"}>
               <h1 className="text-xl cursor-pointer font-medium  underline pt-3"> {`<- edit the inputs`}</h1>
             </Link>
-            
-            <div>
+            {/* <div>
             <button className="bg-black text-xs sm:text-sm lg:text-base xl:text-lg shadow-gray-300 shadow-md hover:bg-gray-900  rounded-lg  m-2 ml-4  p-2 text-gray-100" onClick={() => setStopGenerating(true)}>Stop Generating</button>
             <button className="bg-black text-xs sm:text-sm lg:text-base xl:text-lg shadow-gray-300 shadow-md hover:bg-gray-900  rounded-lg  m-2 ml-4  p-2 text-gray-100" onClick={() => { setStopGenerating(false); setContinueGenerating(true); }}>Continue Generating</button>
-            </div>
+            </div> */}
           </div>
           <div>
             <ul className="flex flex-wrap justify-start">

@@ -16,7 +16,7 @@ const SideBar = () => {
           </Link>
           <div className=" w-cover mt-16">
             <ul className="p-2 text-gray-300 font-medium text-xs  lg:text-sm xl:text-xl pl-12 cursor-pointer">
-                <Link href={"/dataset"} >  
+                <Link href={"/createdataset"} >  
               <li className="p-2 hover:bg-gray-400 hover:text-black rounded-xl w-fit pl-2 pr-2 flex items-left justify-start mt-7">
                 <span className="mr-2">
                   <FontAwesomeIcon icon={faDatabase} className="h-6" />

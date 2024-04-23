@@ -8,19 +8,19 @@ const CreateDataSets = () => {
   const [frequencyPenalty, setFrequencyPenalty] = useState(0);
   const [presencePenalty, setPresencePenalty] = useState(0);
 
-  const handleTemperatureChange = (e:any) => {
+  const handleTemperatureChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTemperature(parseFloat(e.target.value));
   };
 
-  const handleMaxLengthChange = (e:any) => {
+  const handleMaxLengthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setMaxLength(parseFloat(e.target.value));
   };
 
-  const handleFrequencyPenaltyChange = (e:any) => {
+  const handleFrequencyPenaltyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFrequencyPenalty(parseFloat(e.target.value));
   };
 
-  const handlePresencePenaltyChange = (e:any) => {
+  const handlePresencePenaltyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPresencePenalty(parseFloat(e.target.value));
   };
 
@@ -33,15 +33,15 @@ const CreateDataSets = () => {
           cols={60}
           placeholder="Tell about your model, including it's name, who created it, languages it know, last training knowledge cut-off date..."
         />
-        <Link href="/dataset/submit">
-          <button className="bg-green-600 w-fit hover:bg-green-700 text-white font-bold py-2 mb-1 mx-5 px-4 rounded">
+        <Link href="/createdataset/knowledgemodel/result">
+          <button className="bg-[#2e9c79] w-fit hover:bg-[#33856b] text-white font-semibold py-2 mb-1 mx-5 px-4 rounded">
             Submit
           </button>
         </Link>
       </div>
       
       <div className=" w-[20%] lg:w-[20%] bg-[#fff] p-6 h-screen right-0 shadow-md absolute overflow-auto">
-      <div className="mb-2">
+        <div className="mb-2">
           <label className="block text-gray-700 text-xs xl:text-sm font-bold mb-1">Model</label>
           <select className="w-full border border-gray-300 rounded-xl py-2 px-4">
             <option value="chatgpt">ChatGPT</option>
@@ -50,16 +50,34 @@ const CreateDataSets = () => {
           </select>
         </div>
         <div className="mb-3">
-          <label className="block text-gray-700 text-xs xl:text-sm font-bold mb-1">Temperature - {temperature}</label>
-          <input
-            type="range"
-            min="0"
-            max="1"
-            step="0.01"
-            value={temperature}
-            onChange={handleTemperatureChange}
-            className="w-full border border-gray-300 rounded-xl py-2 px-4"
-          />
+          <div className='flex'>
+  <label className="block text-gray-700 text-xs xl:text-sm font-bold mb-1 pt-1 pr-1">Temperature - </label>
+  <input
+    type="number"
+    min="0"
+    max="1"
+    step="0.01"
+    value={temperature}
+    onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
+      let value = parseFloat(e.target.value);
+      if (value < 0) value = 0;
+      if (value > 1) value = 1;
+      setTemperature(value);
+    }}
+    className="w-1/3 border border-gray-300 rounded-lg p-1 pb-0 mr-2"
+  />  
+</div>
+<input
+  type="range"
+  min="0"
+  max="1"
+  step="0.01"
+  value={temperature}
+  onChange={handleTemperatureChange}
+  className="w-full border border-gray-300 rounded-xl py-2 px-4"
+/>
+
+          
         </div>
         <div className="mb-3">
           <label className="block text-gray-700 text-xs xl:text-sm font-bold mb-1">Maximum Length - {maxLength}</label>

@@ -7,6 +7,7 @@ const CreateDataSets = () => {
   const [maxLength, setMaxLength] = useState(6000);
   const [frequencyPenalty, setFrequencyPenalty] = useState(0);
   const [presencePenalty, setPresencePenalty] = useState(0);
+  const [generatedString, setGeneratedString] = useState('');
 
   const handleTemperatureChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTemperature(parseFloat(e.target.value));
@@ -23,7 +24,24 @@ const CreateDataSets = () => {
   const handlePresencePenaltyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPresencePenalty(parseFloat(e.target.value));
   };
-
+  const generateGibberish = () => {
+    const generateRandomString = (length: number) => {
+      let result = '';
+      const characters = 'abcdefghijklmnopqrstuvwxyz';
+      const charactersLength = characters.length;
+      for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      }
+      return result;
+    };
+  
+    const length = Math.floor(Math.random() * (14 - 12 + 1)) + 12;
+  
+    const randomString = generateRandomString(length);
+    
+    setGeneratedString(randomString);
+  };
+  
   return (
     <div className="absolute right-0 flex justify-start w-[90%] lg:w-[75%] ">
       <div className="flex flex-col w-[80%]">
@@ -33,13 +51,13 @@ const CreateDataSets = () => {
           cols={60}
           placeholder="Tell about your model, including it's name, who created it, languages it know, last training knowledge cut-off date..."
         />
-        <Link href="/createdataset/knowledgemodel/result">
-          <button className="bg-[#2e9c79] w-fit hover:bg-[#33856b] text-white font-semibold py-2 mb-1 mx-5 px-4 rounded">
-            Submit
-          </button>
+        <Link href={`/createdataset/knowledgemodel/${generatedString}`}>
+        <button onClick={generateGibberish} className="bg-[#2e9c79] w-fit hover:bg-[#33856b] text-white font-semibold py-2 mb-1 mx-5 px-4 rounded">
+          Submit
+        </button>
         </Link>
       </div>
-      
+
       <div className=" w-[20%] lg:w-[20%] bg-[#fff] p-6 h-screen right-0 shadow-md absolute overflow-auto">
         <div className="mb-2">
           <label className="block text-gray-700 text-xs xl:text-sm font-bold mb-1">Model</label>
@@ -51,33 +69,31 @@ const CreateDataSets = () => {
         </div>
         <div className="mb-3">
           <div className='flex'>
-  <label className="block text-gray-700 text-xs xl:text-sm font-bold mb-1 pt-1 pr-1">Temperature - </label>
-  <input
-    type="number"
-    min="0"
-    max="1"
-    step="0.01"
-    value={temperature}
-    onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
-      let value = parseFloat(e.target.value);
-      if (value < 0) value = 0;
-      if (value > 1) value = 1;
-      setTemperature(value);
-    }}
-    className="w-1/3 border border-gray-300 rounded-lg p-1 pb-0 mr-2"
-  />  
-</div>
-<input
-  type="range"
-  min="0"
-  max="1"
-  step="0.01"
-  value={temperature}
-  onChange={handleTemperatureChange}
-  className="w-full border border-gray-300 rounded-xl py-2 px-4"
-/>
-
-          
+            <label className="block text-gray-700 text-xs xl:text-sm font-bold mb-1 pt-1 pr-1">Temperature - </label>
+            <input
+              type="number"
+              min="0"
+              max="1"
+              step="0.01"
+              value={temperature}
+              onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
+                let value = parseFloat(e.target.value);
+                if (value < 0) value = 0;
+                if (value > 1) value = 1;
+                setTemperature(value);
+              }}
+              className="w-1/3 border border-gray-300 rounded-lg p-1 pb-0 mr-2"
+            />
+          </div>
+          <input
+            type="range"
+            min="0"
+            max="1"
+            step="0.01"
+            value={temperature}
+            onChange={handleTemperatureChange}
+            className="w-full border border-gray-300 rounded-xl py-2 px-4"
+          />
         </div>
         <div className="mb-3">
           <label className="block text-gray-700 text-xs xl:text-sm font-bold mb-1">Maximum Length - {maxLength}</label>
@@ -98,7 +114,7 @@ const CreateDataSets = () => {
             placeholder='Enter seq. and press tab'
             className="w-full border border-gray-300 rounded-xl py-2 px-4"
           />
-        </div> 
+        </div>
         <div className="mb-3">
           <label className="block text-gray-700 text-xs xl:text-sm font-bold mb-1">Frequency Penalty - {frequencyPenalty}</label>
           <input
@@ -123,6 +139,7 @@ const CreateDataSets = () => {
             className="w-full border border-gray-300 rounded-xl py-2 px-4"
           />
         </div>
+
         <div className="mb-3">
           <label className="block text-gray-700 text-xs xl:text-sm font-bold mb-1">Inject start text</label>
           <input
@@ -132,7 +149,7 @@ const CreateDataSets = () => {
           />
         </div>
         <div>
-          <label className="block text-gray-700 text-xs xl:text-sm font-bold mb-1">Show probablities</label>
+          <label className="block text-gray-700 text-xs xl:text-sm font-bold mb-1">Show probabilities</label>
           <select
             className="w-full border border-gray-300 rounded-xl py-2 px-4"
           >
@@ -146,4 +163,3 @@ const CreateDataSets = () => {
 };
 
 export default CreateDataSets;
-
